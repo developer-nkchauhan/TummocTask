@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vehicle"
+            type="com.app.tummoctask.data.VehicleEntity"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingVertical="12dp">
+
+        <!-- Model & PickerItem -->
+        <LinearLayout
+            android:id="@+id/layoutModel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/divider1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.25">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:id="@+id/tvModel"
+                android:text="@{vehicle.model}"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#000" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:id="@+id/tvBrand"
+                android:text="@{vehicle.brand}"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+        </LinearLayout>
+
+        <!-- Divider 1 -->
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintStart_toEndOf="@id/layoutModel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Vehicle Number -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvVehicleNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{vehicle.number}"
+            android:textColor="#0076FF"
+            android:textSize="14sp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintEnd_toStartOf="@id/divider2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Divider 2 -->
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintStart_toEndOf="@id/tvVehicleNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Fuel Type -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFuelType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{vehicle.fuelType}"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/divider2"
+            app:layout_constraintEnd_toStartOf="@id/divider3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Divider 3 -->
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintStart_toEndOf="@id/tvFuelType"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Year + Duration -->
+        <LinearLayout
+            android:id="@+id/layoutYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toEndOf="@id/divider3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.25">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/tvYear"
+                android:text="@{vehicle.yearOfPurchase}"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/tvAge"
+                android:text="7 years 6 months"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+        </LinearLayout>
+
+        <!-- Bottom Line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toBottomOf="@id/layoutModel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

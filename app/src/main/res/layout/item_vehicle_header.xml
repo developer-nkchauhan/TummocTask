@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F4F7FB"
+        android:paddingVertical="12dp">
+
+        <!-- Column 1 -->
+        <TextView
+            android:id="@+id/headerModelBrand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Model &amp; Brand"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/viewBottom"
+            app:layout_constraintEnd_toStartOf="@+id/divider1"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Divider 1 -->
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/headerModelBrand" />
+
+        <!-- Column 2 -->
+        <TextView
+            android:id="@+id/headerVehicleNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Number"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/viewBottom"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Divider 2 -->
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintStart_toEndOf="@id/headerVehicleNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Column 3 -->
+        <TextView
+            android:id="@+id/headerFuelType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Fuel Type"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/divider2"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/viewBottom"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Divider 3 -->
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintStart_toEndOf="@id/headerFuelType"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Column 4 -->
+        <TextView
+            android:id="@+id/headerYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Year of Purchase"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/divider3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/viewBottom"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Bottom Line -->
+        <View
+            android:id="@+id/viewBottom"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

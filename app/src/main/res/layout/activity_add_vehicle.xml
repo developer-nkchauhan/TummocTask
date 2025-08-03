@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRootAddVehicle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:background="@android:color/white">
+
+        <!-- VEHICLE DETAILS TITLE -->
+        <TextView
+            android:id="@+id/tvVehicleDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Details"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:letterSpacing="0.1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- BRAND -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/brandLayout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Brand"
+            app:layout_constraintTop_toBottomOf="@id/tvVehicleDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/actBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:background="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- MODEL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/modelLayout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Model"
+            app:layout_constraintTop_toBottomOf="@id/brandLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/actModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:background="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- FUEL TYPE -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fuelLayout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Fuel Type"
+            app:layout_constraintTop_toBottomOf="@id/modelLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/actFuelType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:background="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- VEHICLE NUMBER -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/vehicleNumberLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Vehicle Number"
+            app:layout_constraintTop_toBottomOf="@id/fuelLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etVehicleNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- OTHER DETAILS TITLE -->
+        <TextView
+            android:id="@+id/tvOtherDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Other Details"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:letterSpacing="0.1"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/vehicleNumberLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- YEAR OF PURCHASE -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/yearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Year of Purchase"
+            app:layout_constraintTop_toBottomOf="@id/tvOtherDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select year of purchase"
+                android:focusable="true"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- OWNER NAME -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ownerLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Owner Name"
+            app:layout_constraintTop_toBottomOf="@id/yearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etOwner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter owner's full name"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ADD VEHICLE BUTTON -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddVehicle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add Vehicle"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#1380FD"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
