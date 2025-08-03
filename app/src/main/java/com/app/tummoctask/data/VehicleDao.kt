@@ -24,4 +24,7 @@ interface VehicleDao {
 
     @Query("SELECT COUNT(*) FROM vehicles WHERE fuelType = 'Electric'")
     suspend fun getElectricVehicleCount(): Int
+
+    @Query("SELECT DISTINCT brand FROM vehicles")
+    suspend fun getAllDistinctBrands(): List<String>
 }

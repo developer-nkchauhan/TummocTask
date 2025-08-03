@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -25,6 +26,7 @@ class AddVehicleActivity : AppCompatActivity() {
         enableEdgeToEdge()
         bind = DataBindingUtil.setContentView(this,R.layout.activity_add_vehicle)
 
+        WindowCompat.setDecorFitsSystemWindows(window,false)
         ViewCompat.setOnApplyWindowInsetsListener(bind.clRootAddVehicle) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(v.paddingLeft, systemBars.top, v.paddingRight, systemBars.bottom)

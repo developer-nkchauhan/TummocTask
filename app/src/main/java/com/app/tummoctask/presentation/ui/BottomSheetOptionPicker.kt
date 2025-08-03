@@ -20,12 +20,18 @@ class BottomSheetOptionPicker(
     private val onOptionSelected: (String) -> Unit
 ) : BottomSheetDialogFragment() {
 
+    lateinit var binding : BottomSheetPickerBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = BottomSheetPickerBinding.inflate(inflater,container,false)
+        binding = BottomSheetPickerBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.tvTitle.text = title
         val adapter = PickerAdapter(items, selectedItem) { item ->
             onOptionSelected(item.name)
@@ -33,7 +39,6 @@ class BottomSheetOptionPicker(
         }
         binding.rvItems.layoutManager = LinearLayoutManager(requireContext())
         binding.rvItems.adapter = adapter
-        return binding.root
     }
 
 

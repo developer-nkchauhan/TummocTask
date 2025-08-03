@@ -13,4 +13,7 @@ class VehicleRepository(private val dao : VehicleDao) {
 
     suspend fun getTotalVehicles() : Int = dao.getTotalVehicleCount()
     suspend fun getTotalElectricVehicles(): Int = dao.getElectricVehicleCount()
+
+    suspend fun getBrands() : List<String> = dao.getAllDistinctBrands()
+
 }

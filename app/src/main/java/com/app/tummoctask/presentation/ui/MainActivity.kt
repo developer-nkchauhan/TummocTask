@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.tummoctask.R
 import com.app.tummoctask.databinding.ActivityMainBinding
+import com.app.tummoctask.presentation.ui.adapter.VehicleAdapter
 import com.app.tummoctask.presentation.viewmodel.VehicleViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -62,6 +63,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddVehicleActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnFilter.setOnClickListener {
+            FilterDialog { onSelected ->
+                applyFilter(onSelected)
+            }.show(supportFragmentManager,"FilterDialog")
+        }
+    }
+
+    private fun applyFilter(onSelected:Map<String, List<String>>) {
+
     }
 
     override fun onResume() {

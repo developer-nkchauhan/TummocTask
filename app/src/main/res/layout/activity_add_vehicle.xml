@@ -160,7 +160,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Select year of purchase"
                 android:focusable="true"
-                android:inputType="textCapWords" />
+                android:maxLength="4"
+                android:minEms="4"
+                android:maxEms="4"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- OWNER NAME -->

@@ -1,4 +1,4 @@
-package com.app.tummoctask.presentation.ui
+package com.app.tummoctask.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.tummoctask.data.VehicleEntity
 import com.app.tummoctask.databinding.ItemVehicleBinding
 import com.app.tummoctask.databinding.ItemVehicleHeaderBinding
+import com.app.tummoctask.presentation.ui.VehicleListItem
 
 class VehicleAdapter : ListAdapter<VehicleListItem, RecyclerView.ViewHolder>(VehicleDiffCallback()) {
 
@@ -75,4 +76,3 @@ class VehicleAdapter : ListAdapter<VehicleListItem, RecyclerView.ViewHolder>(Veh
     }
 
 }
-

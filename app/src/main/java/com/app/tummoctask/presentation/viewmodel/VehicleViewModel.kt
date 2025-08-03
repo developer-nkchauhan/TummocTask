@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.app.tummoctask.data.PickerItem
 import com.app.tummoctask.data.VehicleDatabase
 import com.app.tummoctask.data.VehicleEntity
 import com.app.tummoctask.domain.repository.VehicleRepository
@@ -84,4 +85,12 @@ class VehicleViewModel(application: Application) : AndroidViewModel(application)
             repo.insert(it)
         }
     }
+
+
+    suspend fun getBrands() : List<String> = repo.getBrands()
+
+    fun getFuelTypes() : List<String> {
+        return listOf("Petrol","Diesel","Electric","Hybrid")
+    }
+
 }
