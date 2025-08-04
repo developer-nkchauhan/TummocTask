@@ -5,10 +5,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.tummoctask.R
 import com.app.tummoctask.data.PickerItem
-import com.app.tummoctask.data.VehicleDatabase
-import com.app.tummoctask.data.VehicleEntity
+import com.app.tummoctask.data.database.VehicleDatabase
+import com.app.tummoctask.data.database.VehicleEntity
 import com.app.tummoctask.domain.repository.VehicleRepository
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class AddVehicleDetailsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -23,6 +24,7 @@ class AddVehicleDetailsViewModel(application: Application) : AndroidViewModel(ap
         repo.insert(vehicle)
     }
 
+    // Here,selection data are static...
     fun getBrandItems() : List<PickerItem> {
         return listOf(
             PickerItem("Tata", R.drawable.ic_tata),
@@ -33,6 +35,8 @@ class AddVehicleDetailsViewModel(application: Application) : AndroidViewModel(ap
         )
     }
 
+
+    // Here,selection data are static...
     fun getModelNameByBrandName(modelName : String) : List<PickerItem> {
         val brandModelMap: HashMap<String, List<PickerItem>> = hashMapOf(
             "tata" to listOf(
@@ -79,5 +83,32 @@ class AddVehicleDetailsViewModel(application: Application) : AndroidViewModel(ap
 
         return brandModelMap[modelName.lowercase()] ?: emptyList()
     }
+    data class ValidationResult(val isValid: Boolean,val errorMessage: String? = "Invalid input")
+    fun validateVehicleInput(
+        brand: String,
+        model: String,
+        fuelType: String,
+        vehicleNumber: String,
+        purchaseYear: String
+    ): ValidationResult {
+        return when {
+            brand.isBlank() -> ValidationResult(false, "Brand is required")
+            model.isBlank() -> ValidationResult(false, "Model is required")
+            fuelType.isBlank() -> ValidationResult(false, "Fuel type is required")
+            vehicleNumber.isNotEmpty() && !vehicleNumber.isValidVehicleNumber() -> ValidationResult(false, "Invalid vehicle number")
+            purchaseYear.isNotEmpty() && !purchaseYear.isValidPurchaseYear() -> ValidationResult(false, "Invalid purchase year")
+            else -> ValidationResult(true)
+        }
+    }
+
+    private fun String.isValidPurchaseYear(): Boolean {
+        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+        return this.toIntOrNull()?.let { it in 1900..currentYear } == true
+    }
+
+    private fun String.isValidVehicleNumber() : Boolean {
+        return this.uppercase().matches(Regex("^[A-Z]{2}\\s?[0-9]{1,2}\\s?[A-Z]{1,2}\\s?[0-9]{4}$"))
+    }
+
 }
 

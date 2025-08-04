@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.app.tummoctask.data.VehicleEntity
+import com.app.tummoctask.data.database.VehicleEntity
 import com.app.tummoctask.databinding.ItemVehicleBinding
 import com.app.tummoctask.databinding.ItemVehicleHeaderBinding
 import com.app.tummoctask.presentation.ui.VehicleListItem

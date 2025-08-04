@@ -1,6 +1,7 @@
-package com.app.tummoctask.presentation.ui
+package com.app.tummoctask.presentation.ui.activities
 
 import android.os.Bundle
+import android.text.InputFilter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,14 +12,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.app.tummoctask.R
 import com.app.tummoctask.data.PickerItem
-import com.app.tummoctask.data.VehicleEntity
+import com.app.tummoctask.data.database.VehicleEntity
 import com.app.tummoctask.databinding.ActivityAddVehicleBinding
+import com.app.tummoctask.presentation.ui.dialogs.BottomSheetOptionPicker
 import com.app.tummoctask.presentation.viewmodel.AddVehicleDetailsViewModel
+import java.util.Calendar
 
 class AddVehicleActivity : AppCompatActivity() {
 
     lateinit var bind : ActivityAddVehicleBinding
-
     lateinit var viewmodel : AddVehicleDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,14 +62,21 @@ class AddVehicleActivity : AppCompatActivity() {
             }
         }
 
+        // set-up input is autoCaps
+        bind.etVehicleNumber.filters = arrayOf(InputFilter.AllCaps())
+
         bind.btnAddVehicle.setOnClickListener {
             val brandName = bind.actBrand.text.toString()
             val modelName = bind.actModel.text.toString()
             val fuelType = bind.actFuelType.text.toString()
             val vehicleNo = bind.etVehicleNumber.text.toString()
+            val purchaseYear = bind.etYear.text.toString()
 
-            if(brandName.isEmpty() || modelName.isEmpty() || fuelType.isEmpty() || vehicleNo.isEmpty()) {
-                Toast.makeText(this,"Vehicle details can't be empty..", Toast.LENGTH_SHORT).show()
+            // basic validations..
+            val validation = viewmodel.validateVehicleInput(brandName,modelName,fuelType,vehicleNo,purchaseYear)
+
+            if(!validation.isValid) {
+                Toast.makeText(this,validation.errorMessage, Toast.LENGTH_SHORT).show()
             } else {
                 val vehicle = VehicleEntity(
                     model = modelName,
@@ -77,6 +86,7 @@ class AddVehicleActivity : AppCompatActivity() {
                     ownerName = bind.etOwner.text.toString(),
                     number = vehicleNo
                 )
+                // adding vehicle to database..
                 viewmodel.addVehicleToDb(vehicle)
                 Toast.makeText(this,"Vehicle added successfully", Toast.LENGTH_SHORT).show()
                 finish()
@@ -92,7 +102,7 @@ class AddVehicleActivity : AppCompatActivity() {
             items = fuelItems,
             selectedItem = bind.fuelLayout.editText?.text.toString()
         ) { selectedFuelType ->
-            bind.actFuelType.setText(selectedFuelType,false)
+            bind.actFuelType.setText(selectedFuelType, false)
         }.show(supportFragmentManager,"FuelPicker")
     }
 
@@ -102,8 +112,7 @@ class AddVehicleActivity : AppCompatActivity() {
             items = viewmodel.getModelNameByBrandName(brandName),
             selectedItem = bind.modelLayout.editText?.text.toString()
         ) { selectedBrand ->
-            bind.actModel.setText(selectedBrand,false)
-
+            bind.actModel.setText(selectedBrand, false)
         }.show(supportFragmentManager,"ModelPicker")
     }
 
@@ -113,10 +122,11 @@ class AddVehicleActivity : AppCompatActivity() {
             items = brandItems,
             selectedItem = bind.brandLayout.editText?.text.toString()
         ) { selectedBrand ->
-            bind.actBrand.setText(selectedBrand,false)
+            bind.actBrand.setText(selectedBrand, false)
 
         }.show(supportFragmentManager,"BrandPicker")
     }
 
 
 }
+

@@ -1,4 +1,4 @@
-package com.app.tummoctask.presentation.ui
+package com.app.tummoctask.presentation.ui.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import com.app.tummoctask.presentation.viewmodel.VehicleViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
 
-class FilterDialog(private val onSelectedFilter : (Map<String, List<String>>) -> Unit) : BottomSheetDialogFragment() {
+class FilterDialog(private val OnApplyOrClearClicked : (Boolean) -> Unit) : BottomSheetDialogFragment() {
 
     private lateinit var filterViewModel: FilterViewModel
     private lateinit var vehicleViewModel : VehicleViewModel
@@ -44,13 +44,13 @@ class FilterDialog(private val onSelectedFilter : (Map<String, List<String>>) ->
         vehicleViewModel = ViewModelProvider(requireActivity())[VehicleViewModel::class.java]
 
         binding.btnApply.setOnClickListener {
-            val selectedFilters = filterViewModel.getAllSelected()
-            onSelectedFilter(selectedFilters)
+            OnApplyOrClearClicked(true)
             dismiss()
         }
 
         binding.btnClearAll.setOnClickListener {
             filterViewModel.clearAllSelections()
+            OnApplyOrClearClicked(false)
             dismiss()
         }
 

@@ -1,4 +1,4 @@
-package com.app.tummoctask.presentation.ui
+package com.app.tummoctask.presentation.ui.dialogs
 
 import android.annotation.SuppressLint
 import android.os.Bundle

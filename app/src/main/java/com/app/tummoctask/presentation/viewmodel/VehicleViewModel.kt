@@ -5,14 +5,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.app.tummoctask.data.PickerItem
-import com.app.tummoctask.data.VehicleDatabase
-import com.app.tummoctask.data.VehicleEntity
+import com.app.tummoctask.data.database.VehicleDatabase
+import com.app.tummoctask.data.database.VehicleEntity
 import com.app.tummoctask.domain.repository.VehicleRepository
 import kotlinx.coroutines.launch
 
 class VehicleViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Vehicle related Repository
     private var repo : VehicleRepository
 
     var allVehicles : LiveData<List<VehicleEntity>>
@@ -92,5 +92,7 @@ class VehicleViewModel(application: Application) : AndroidViewModel(application)
     fun getFuelTypes() : List<String> {
         return listOf("Petrol","Diesel","Electric","Hybrid")
     }
+
+    suspend fun getFilteredData(brands : List<String>?,fTypes : List<String>?) = repo.getFilteredQueryData(brands,fTypes)
 
 }

@@ -1,5 +1,6 @@
 package com.app.tummoctask.presentation.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,8 @@ class CategoryAdapter(
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder,position: Int) {
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categories[position]
         val isSelected = category == selectedCategory
 

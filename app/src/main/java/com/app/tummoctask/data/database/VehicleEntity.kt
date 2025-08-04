@@ -1,4 +1,4 @@
-package com.app.tummoctask.data
+package com.app.tummoctask.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

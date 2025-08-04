@@ -29,10 +29,4 @@ class FilterViewModel : ViewModel() {
             list.forEach { it.isSelected = false }
         }
     }
-
-    fun getAllSelected(): Map<String, List<String>> {
-        return _filterState.mapValues { entry ->
-            entry.value.filter { it.isSelected }.map { it.name }
-        }
-    }
 }

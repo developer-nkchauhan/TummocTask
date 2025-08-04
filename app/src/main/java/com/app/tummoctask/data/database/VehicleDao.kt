@@ -1,4 +1,4 @@
-package com.app.tummoctask.data
+package com.app.tummoctask.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -27,4 +27,14 @@ interface VehicleDao {
 
     @Query("SELECT DISTINCT brand FROM vehicles")
     suspend fun getAllDistinctBrands(): List<String>
+
+    @Query("""
+        SELECT * FROM vehicles
+        WHERE brand IN (:brands)
+        OR fuelType IN (:fuelTypes)
+    """)
+    suspend fun getFilteredProducts(
+        brands: List<String>?,
+        fuelTypes: List<String>?
+    ): List<VehicleEntity>
 }

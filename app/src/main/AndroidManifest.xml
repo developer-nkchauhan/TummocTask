@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TummocTask">
         <activity
-            android:name=".presentation.ui.AddVehicleActivity"
+            android:name=".presentation.ui.activities.AddVehicleActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name=".presentation.ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
